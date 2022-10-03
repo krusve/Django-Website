@@ -1,0 +1,6 @@
+__pycache__/
+.idea/*
+venv
+/personal_website_project/project_head/db.sqlite3
+/personal_website_project/db.sqlite3
+/personal_website_project/project_head/.env

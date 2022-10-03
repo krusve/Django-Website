@@ -1,0 +1,17 @@
+{% autoescape off %}
+Hello {{ name }},
+
+Thank you for contact request:
+TODO: change text
+
+
+Email:
+{{ user_email }}
+
+Message:
+{{ message }}
+
+Sincerely,
+TODO: enter name of sender
+
+{% endautoescape %}

@@ -1,0 +1,13 @@
+{% autoescape off %}
+Hello,
+{{ username }}
+TODO: change text
+
+You are receiving this mail because you recently registered for {{ protocol }}://{{ domain }}{% url 'home' %}.
+
+Your account has been approved and you can now access the website.
+
+Sincerely,
+TODO: enter name of sender
+
+{% endautoescape %}

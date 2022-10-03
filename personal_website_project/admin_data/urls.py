@@ -1,0 +1,37 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.curriculum_vitae_data, name="curriculumVitaeData"),
+    path("createPI/", views.create_personal_information, name="createPersonal"),
+    path("addEducation/", views.add_education, name="add_education"),
+    path("listEducation/", views.list_education, name="list_education"),
+    path("listEducation/editEducation-<int:pk>/", views.edit_education, name="edit_education"),
+    path("addExtracurricular/", views.add_extracurricular, name="add_extracurricular"),
+    path("listExtracurricular/", views.list_extracurricular, name="list_extracurricular"),
+    path("listExtracurricular/editExtracurricular-<int:pk>/", views.edit_extracurricular, name="edit_extracurricular"),
+    path("addOtherSkill/", views.add_other_skill, name="add_other_skill"),
+    path("addCertSkill/", views.add_cert, name="add_cert"),
+    path("listOtherSkill/", views.list_other_skill, name="list_other_skill"),
+    path("listCertSkill/", views.list_cert, name="list_cert"),
+    path("listOtherSkill/editOther-<int:pk>/", views.edit_other_skill, name="edit_other_skill"),
+    path("listCertSkill/editCert-<int:pk>/", views.edit_cert, name="edit_cert"),
+    path("addWork/", views.add_work, name="add_work"),
+    path("listWork/", views.list_work, name="list_work"),
+    path("listWork/editWork-<int:pk>/", views.edit_work, name="edit_work"),
+    path("addSkill/", views.add_skill, name="add_skill"),
+    path("listSkill/", views.list_skill, name="list_skill"),
+    path("listSkill/editSkill-<int:pk>/", views.edit_skill, name="edit_skill"),
+    path("addOtherSkill/", views.add_other_skill, name="add_other_skill"),
+    path("listOtherSkill/", views.list_other_skill, name="list_other_skill"),
+    path("listOtherSkill/deleteOther-<int:pk>/", views.delete_other_skill, name="delete_other_skill"),
+    path("listSkill/deleteSkill-<int:pk>/", views.delete_skill, name="delete_skill"),
+    path("listWork/deleteWork-<int:pk>/", views.delete_work, name="delete_work"),
+    path("listEducation/deleteEducation-<int:pk>/", views.delete_education, name="delete_education"),
+    path("listExtracurricular/deleteExtracurricular-<int:pk>/", views.delete_extracurricular,
+         name="delete_extracurricular"),
+    path("listCert/deleteCert-<int:pk>/", views.delete_cert, name="delete_cert"),
+    path("listUsers/", views.list_all_user, name="list_user"),
+    path("listUsers/changeStatus-<int:pk>/", views.change_status, name="change_status"),
+
+]

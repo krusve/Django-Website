@@ -1,0 +1,23 @@
+{% extends "main_app/base.html" %}
+
+{% block title %}CV Home{% endblock %}
+{% block content %}
+
+
+    <p><a href="{% url 'createPersonal' %}" class="">Change Personal Information</a></p>
+    <p><a href="{% url 'add_education' %}" class="">Add Education</a></p>
+    <p><a href="{% url 'list_education' %}" class="">List Education Entries</a></p>
+    <p><a href="{% url 'add_extracurricular' %}" class="">Add Extracurricular</a></p>
+    <p><a href="{% url 'list_extracurricular' %}" class="">List Extracurricular Entries</a></p>
+    <p><a href="{% url 'add_cert' %}" class="">Add Cert</a></p>
+    <p><a href="{% url 'list_cert' %}" class="">List Cert Skills</a></p>
+    <p><a href="{% url 'add_work' %}" class="">Add Work</a></p>
+    <p><a href="{% url 'list_work' %}" class="">List Work</a></p>
+    <p><a href="{% url 'add_skill' %}" class="">Add Skill</a></p>
+    <p><a href="{% url 'list_skill' %}" class="">List Skill</a></p>
+    <p><a href="{% url 'add_other_skill' %}" class="">Add Other Skill</a></p>
+    <p><a href="{% url 'list_other_skill' %}" class="">List Other Skill</a></p>
+    <p><a href="{% url 'list_user' %}" class="">All Users</a></p>
+
+
+{% endblock %}

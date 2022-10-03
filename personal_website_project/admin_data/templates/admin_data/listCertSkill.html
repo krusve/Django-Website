@@ -1,0 +1,40 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %}List of Certificates {% endblock %}
+
+{% block content %}
+
+        <p><a href="{%  url 'add_cert' %}" class="">Add Cert</a></p>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Obtained</th>
+                <th scope="col">Description</th>
+                <th scope="col">Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for entries in all_entries %}
+                <tr>
+                    <th scope="row"><a href="{%  url 'edit_cert' entries.pk %}"
+                    >{{ entries.name }}</a></th>
+                    <td>{{ entries.obtained }}</td>
+                    <td>{{ entries.description }}</td>
+                    <td><form method="POST" action="{%  url 'delete_cert' entries.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" onclick="myAlert('{{ entries.name }}');"
+                                class="delete-entry-button">Remove</button>
+                        </form>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "main_app/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Education {% endblock %}
+
+{% block content %}
+
+    <form method="post" action="">
+    {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.type|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.start_date|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.end_date|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.gpa|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.coursework|as_crispy_field }}
+            </div>
+        </div>
+        {{ form.description|as_crispy_field }}
+
+
+        <div class="mt-3">
+            <button class="btn btn-success" type="submit" name="save">Create</button>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<div class="footer-color">
+    <div class="contain-footer">
+        <div class="first-footer-row">
+            <div class="footer-left-side-links">
+                <a class="footer-links" href="{% url 'about' %}"><p class="footer-link-name">About</p></a>
+                <a class="footer-links" href="{% url 'home' %}"><p class="footer-link-name">Home</p></a>
+            </div>
+            <div class="footer-social-media">
+                <a href="{{ personal_obj_github }}" target="_blank" rel="noopener noreferrer"><div class="circletag
+                github-link"></div></a>
+                <a href="{{ personal_obj_linkedin }}" target="_blank" rel="noopener noreferrer"><div class="circletag linkedin-link"></div></a>
+            </div>
+            <div class="footer-right-side-links">
+                <a class="footer-links" href="{% url 'login' %}"><p class="footer-link-name">Login</p></a>
+                <a class="footer-links" href="{% url 'register' %}"><p class="footer-link-name">Register</p></a>
+            </div>
+        </div>
+        <div class="second-footer-row">
+            <div class="last-row">
+                    <!-- TODO: change text! -->
+                    © "Year" "Name".
+            </div>
+        </div>
+        <div class="third-footer-row">
+                <a class="third-footer-row-a" href="{% url 'cookie_policy' %}"><p class="footer-link-name">Cookie Policy</p></a>
+                <a class="third-footer-row-a" href="{% url 'terms_conditions' %}"><p class="footer-link-name">Terms And
+                    Conditions</p></a>
+                <a class="third-footer-row-a" href="{% url 'privacy_policy' %}"><p class="footer-link-name">Privacy Policy</p></a>
+        </div>
+
+
+
+    </div>
+</div>

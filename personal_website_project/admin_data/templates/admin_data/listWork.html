@@ -1,0 +1,40 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %}List of Education entries {% endblock %}
+
+{% block content %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Present</th>
+                <th scope="col">Description</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for entries in all_entries|dictsortreversed:"start_date"|dictsortreversed:"present" %}
+                <tr>
+                    <th scope="row"><a href="{%  url 'edit_work' entries.pk %}"
+                    >{{ entries.company }}</a></th>
+                    <td>{{ entries.start_date }}</td>
+                    <td>{{ entries.end_date }}</td>
+                    <td>{{ entries.present }}</td>
+                    <td>{{ entries.description }}</td>
+                    <td><form method="POST" action="{%  url 'delete_work' entries.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" onclick="myAlert('{{ entries.name }}');"
+                                class="delete-entry-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

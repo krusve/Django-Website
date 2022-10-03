@@ -1,0 +1,65 @@
+{% extends "main_app/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="row">
+{% if user.first_name %}
+    <div class="col-4">
+        <p>First Name:</p>
+    </div>
+    <div class="col-8">
+        {{ user.first_name }}
+    </div>
+{% endif %}
+{% if user.last_name %}
+    <div class="col-4">
+        <p>Last Name</p>
+    </div>
+    <div class="col-8">
+        {{ user.last_name }}
+    </div>
+{% endif %}
+    <div class="col-4">
+        <p>Username</p>
+    </div>
+    <div class="col-8">
+        {{ user.username }}
+    </div>
+    <div class="col-4">
+        <p>E-Mail</p>
+    </div>
+    <div class="col-8">
+        {{ user.email }}
+    </div>
+    <div class="col-4">
+        <p>Date Joined</p>
+    </div>
+    <div class="col-8">
+        {{ user.date_joined|date:'d / b / Y' }}
+    </div>
+    <div class="col-4">
+        <p>Delete Profile</p>
+    </div>
+    <div class="col-8">
+        <form method="POST" action="{%  url 'delete_profile' user.pk %}">
+            {% csrf_token %}
+            <button type="submit" onclick="myAlert('{{ user.email }}');"
+                    class="delete-entry-button">Remove</button>
+        </form>
+    </div>
+    <div class="col-8">
+        <br>
+        <p>*In case any of the information is incorrect, you can either delete and create a new account or contact me
+            and I will rectify any mistakes
+        </p>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

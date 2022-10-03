@@ -1,0 +1,49 @@
+{% extends "main_app/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Work {% endblock %}
+
+{% block content %}
+
+
+    <form method="post" action="">
+    {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                {{ user_form.first_name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ user_form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-6" style="margin-bottom: 0">
+                {{ user_form.username|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ user_form.email|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                {{ user_form.password1|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ user_form.password2|as_crispy_field }}
+            </div>
+        </div>
+        <div>
+            {{ profile_form.justification|as_crispy_field }}
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-primary" type="submit" name="save">Register</button>
+        </div>
+            <p class="text-left about-text-small">If you already have an account, <a href="/login">login</a> instead.</p>
+
+    </form>
+
+
+{% endblock %}

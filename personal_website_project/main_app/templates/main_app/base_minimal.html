@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Cookie Consent by TermsFeed (https://www.TermsFeed.com) -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+<!-- TODO: change domain name in function below (two times) -->
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"headline","consent_type":"express","palette":"dark","language":"en","page_load_consent_levels":["strictly-necessary"],
+    "notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,
+    "website_name":"domain.com","open_preferences_center_selector":"#open_preferences_center",
+    "website_privacy_policy_url":"https://www.domain.com/privacy-policy"});
+});
+</script>
+
+<!-- Google Analytics -->
+<script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id={{ GA_KEY }}"></script>
+<script type="text/plain" cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ GA_KEY }}');
+</script>
+<!-- end of Google Analytics-->
+
+<noscript>ePrivacy and GPDR Cookie Consent by <a href="https://www.TermsFeed.com/" rel="nofollow">TermsFeed Generator</a></noscript>
+<!-- End Cookie Consent by TermsFeed (https://www.TermsFeed.com) -->
+
+    <meta charset="UTF-8">
+    <!-- TODO: change tags if needed -->
+    <meta name="description" content="Personal Website">
+    <meta name="keywords" content="Resume, CV, Personal Website, name">
+    <meta name="author" content="name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
+    {% load static %}
+        <script src="{% static 'base.js' %}"></script>
+
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: change text -->
+    <title>{% block title %}someones site{% endblock %}</title>
+</head>
+<body>
+
+{% include 'main_app/messages.html' %}
+
+{% include 'main_app/navbar.html' %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+{#  Bootstrap  #}
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- JavaScript Bundle with Popper -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

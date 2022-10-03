@@ -1,0 +1,117 @@
+<head>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
+    {% load static %}
+        <script src="{% static 'base.js' %}"></script>
+
+    {% load static %}
+    <!-- TODO: change path to logo -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'logo/placeholder_logo2.png' %}"/>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: change name -->
+    <title>{% block title %}Someones site{% endblock %}</title>
+
+</head>
+
+
+{#<div id="hamburger" class="hamburger">#}
+{#    <button role="button" class="hamburger-icon" id="hamburgerIcon" onclick="openSide()">☰</button>#}
+{#</div>   #}
+<nav>
+    <div class="nav-bar-toggle-container">
+        <div class="menu-name" id="menu-name-id" onclick="toggleMenu(this)">MENU</div>
+        <div class="nav-bar-toggle" id="top-nav-bar-toggle" onclick="toggleMenu(this)">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
+        </div>
+    </div>
+</nav>
+<div class="nav-bar-logo-cotnainer">
+    <div class="nav-bar-logo">
+        <!-- TODO: change path to logo -->
+        <img src="{% static 'logo/placeholder_logo2.png' %}" alt="logo" class="nav-bar-logo">
+    </div>
+</div>
+
+
+<div class="overlay-menu" id="overlay-menu-div">
+    <div class="navigation-links">
+        <a class="navigation-links-a" href="{% url 'home' %}">Home</a>
+
+
+        {% if user.is_authenticated and user.is_active %}
+            <a class="navigation-links-a" href="{% url 'resume' %}">Resume</a>
+            <a class="navigation-links-a" href="{% url 'about' %}">About</a>
+        {% endif %}
+        <a class="navigation-links-a" href="{% url 'contact_request' %}">Contact</a>
+    </div>
+    <div class="navigation-links-account">
+            {% if not user.is_authenticated%}
+                <a class="navigation-links-a" href="{% url 'register' %}">Register</a>
+                <a class="navigation-links-a" href="{% url 'login' %}">Login</a>
+            {% endif %}
+            {% if user.is_authenticated and user.is_active %}
+                <a class="navigation-links-a" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+
+
+        {% if user.is_authenticated and user.is_active %}
+            <div class="dropdown pb-5">
+                <button onclick="toggleDropdown(this)" class="dropbtn">Account<p class="triangle-icon">&#9660;</p></button>
+                <div id="dropdown-content" class="dropdown-content-class">
+                    {% if user.is_authenticated and user.is_active %}
+                        <a class="navigation-links-a" href="{% url 'password_change' %}">Change Password</a>
+                        <a class="navigation-links-a" href="{% url 'user_profile' %}">Profile</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="navigation-links-admin">
+        <div>
+            {% if user.is_authenticated and user.is_staff %}
+                <a class="navigation-links-a" href="{% url 'curriculumVitaeData' %}">Data</a>
+                <a class="navigation-links-a" href="{%  url 'admin:index' %}">Admin</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="navigation-links-findeme">
+        {% if user.is_authenticated and user.is_active %}
+            <div class="navigation-links-social">
+                <a  class="navigation-links-a" href="{{ personal_obj_github }}" target="_blank" rel="noopener noreferrer"><div
+                        class="circletag-navigation
+                github-link"></div></a>
+                <a class="navigation-links-a" href="{{ personal_obj_linkedin }}" target="_blank" rel="noopener noreferrer"><div
+                        class="circletag-navigation
+                linkedin-link"></div></a>
+            </div>
+            <div class="navigation-links-email">
+            <div class="pb-2">
+                <p class="navigation-links-email-text">Personal E-Mail: </p><br><p class="navigation-links-email-links">
+            <!-- TODO: change email! -->
+                personal@email.email</p>
+            </div>
+            <div class="pb-2">
+                <!-- TODO: change path! -->
+                <p class="navigation-links-email-text">Download<a class="navigation-links-email-links"
+                                                                   href="{% static 'files/public_pgp.txt' %}"> PGP file</a></p>
+            </div>
+            <div>
+                <p class="navigation-links-email-text">Or search at <a class="navigation-links-email-links"
+                                                                         href="https://keyserver2.pgp.com/"
+                                     target="_blank" rel="noopener noreferrer">this PGP server</a></p>
+            </div>
+
+
+            </div>
+
+        {% endif %}
+    </div>
+
+</div>
+

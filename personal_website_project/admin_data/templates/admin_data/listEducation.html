@@ -1,0 +1,44 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %}List of Education entries {% endblock %}
+
+{% block content %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+{#                <th scope="col">#</th>#}
+                <th scope="col">Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">GPA</th>
+                <th scope="col">GPA</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entries in all_entries|dictsort:"start_date" %}
+                <tr>
+                    <th scope="row"><a href="{%  url 'edit_education' entries.pk %}">{{ entries.name }}</a></th>
+{#                    <td><a href="editEducation-{{ entries.id }}/">{{ entries.name }}</a></td>#}
+                    <td>{{ entries.start_date }}</td>
+                    <td>{{ entries.end_date }}</td>
+                    <td>{{ entries.description }}</td>
+                    <td>{{ entries.type }}</td>
+                    <td>{{ entries.gpa }}</td>
+                    <td>{{ entries.coursework }}</td>
+                    <td><form method="POST" action="{%  url 'delete_education' entries.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" onclick="myAlert('{{ entries.name }}');"
+                                class="delete-entry-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+
+{% autoescape off %}
+Hello,
+This template is used for emails sent to the admin
+TODO: change text
+
+Name:
+{{ name }}
+
+Email:
+{{ user_email }}
+
+Message:
+{{ message }}
+
+
+Sincerely,
+TODO: enter name of sender
+
+{% endautoescape %}

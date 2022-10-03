@@ -1,0 +1,282 @@
+{% extends 'main_app/base_minimal.html' %}
+
+
+{% load static %}
+        <script src="{% static 'base.js' %}"></script>
+
+
+{% block title %}Resume{% endblock %}
+
+
+{% block content %}
+
+<div class="title-choice">
+    <div class="resume-landing-page-contain">
+        <div class="resume-landing-contain-parallax">
+            <div class="resume-landing-parallax"></div>
+        </div>
+        <div class="resume-landing-left-side-title">
+            <div class="resume-landing-name-container">
+                <h1 class="resume-landing-name-title">Hi, I'm {{ personal_information.title_name}} </h1>
+            </div>
+            <div class="resume-landing-text-container">
+                <p class="resume-landing-personal-text">{{ personal_information.title_text}}</p>
+                <p class="resume-landing-small-text">Based in <b>{{ personal_information.city }}</b>,
+                {{ personal_information.country }}</p>
+            </div>
+            <div class="resume-landing-download-container">
+            <!-- TODO: change path! -->
+                <p><a class="resume-landing-download-text" href=
+                        "{% static 'files/cv.txt' %}"><b>Download CV here</b></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-color page-margin">
+    <div class="personal-contain-small">
+    <div class="title-div">
+        <h1 class="page-title">About me</h1>
+        <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">
+    </div>
+    <div class="personal-left-half-page"
+        data-aos="fade-right"
+        data-aos-delay="25"
+        data-aos-duration="1000"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-easing="ease-in">
+        <div class="personal-image-grid">
+            <!-- TODO: change path! -->
+            <img class="personal-image" src="{% static '/images/placeholder.png' %}" alt="Something here">
+            <div class="personal-image-overlay">Me doing a cool activity</div>
+        </div>
+
+    </div>
+    <div class="personal-right-half-page"
+        data-aos="fade-right"
+        data-aos-delay="25"
+        data-aos-duration="1000"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-easing="ease-in">
+         <div class="personal-contain-personal">
+            <p class="personal-personal-label perosnal-orange">Status:</p>
+            <p class="personal-personal-inf">{{ personal_information.description }}</p>
+        </div>
+        <div class="personal-contain-personal">
+            <p class="personal-personal-label">Name:</p>
+            <p class="personal-personal-inf">{{ personal_information.first_name }}, {{ personal_information.last_name }}</p>
+        </div>
+        <div class="personal-contain-personal">
+            <p class="personal-personal-label">Birthday:</p>
+            <p class="personal-personal-inf">{{ personal_information.birth_date }}</p>
+        </div>
+        <div class="personal-contain-personal">
+            <p class="personal-personal-label">Email:</p>
+            <p class="personal-personal-inf" style="margin-bottom: 0;">{{ personal_information.email }}</p>
+            <!-- TODO: add PGP file for encrypted email (usually public.asc file) -->
+            <!-- TODO: add link to pgp server -->
+            <p class="personal-personal-inf" style="margin-top: 0;">download<a
+                    href="{% static 'files/public_pgp.txt' %}">  PGP file</a> or find it at <a
+                    href="https://keyserver2.pgp.com/"target="_blank" rel="noopener noreferrer">this</a> PGP server </p>
+        </div>
+        <p class="personal-personal-text">{{ personal_information.about_me_text }}</p>
+
+        </div>
+    </div>
+</div>
+
+<div class="skills-color page-margin">
+    <div class="skills-segments-container">
+        <div class="title-div">
+            <h1 class="page-title">Skills</h1>
+            <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">
+        </div>
+        {% for key, value in skills.items %}
+            <div class="skills-segment">
+                <div class="skills-segment-title-div">
+                    <h1 class="skills-segment-title">{{ key }}</h1>
+                </div>
+                <hr class="skills-line-break" style="width: 100%; color: #000000; border-width: 1.5px; margin-top: 1%;
+                margin-bottom:
+                 0">
+            {% for items in value %}
+                {% if forloop.counter0|divisibleby:2  %}
+                    <div class="skills-left-segment">
+                        <p class="skills-left-text">{{ items.name }}</p>
+                        <div class="skills-right-text">
+                            <div class="progress">
+                                <div class="skills-progress-bar" role="progressbar" aria-valuenow="{{ items.level }}"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{ items.level }}%">
+                                    {{ items.level }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="skills-right-segment">
+                        <p class="skills-left-text">{{ items.name }}</p>
+                        <div class="skills-right-text">
+                            <div class="progress">
+                                <div class="skills-progress-bar" role="progressbar" aria-valuenow="{{ items.level }}"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:{{ items.level }}%">
+                                    {{ items.level }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div class="certificates-color page-margin">
+    <div class="contain-information">
+        <div class="title-div">
+            <h1 class="page-title">Certificates</h1>
+{#            <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">#}
+        </div>
+        <div class="all-content-container">
+            {% for entries in certificates|dictsortreversed:"obtained_date" %}
+                <div class="content-border-div">
+                <hr style="width: 100%; border: 0.5px solid rgba(33,37,41,0.35); margin-top: 1%; margin-bottom: 0">
+            </div>
+            <div class="left-content-container">
+                <h2 class="content-left-name">{{ entries.name }}</h2>
+                <p class="content-left-year">{{ entries.obtained_date|date:"M Y" }}</p>
+            </div>
+            <div class="right-content-container">
+{#                <p>{{ entries.role }}</p>#}
+                <p>{{ entries.description }}</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<div class="other-skills-color">
+    <div class="contain-information">
+{#        Part for other skills#}
+        {% if other_skills.all %}
+            <div class="title-div">
+                <h1 class="page-title">Other Skills</h1>
+            </div>
+        {% endif %}
+        <div class="all-content-container">
+            {% for entries in other_skills %}
+                <div class="content-border-div">
+                    <hr style="width: 100%; border: 0.5px solid rgba(33,37,41,0.35); margin-top: 1%; margin-bottom: 0">
+                </div>
+                <div class="left-content-container">
+                    <h2 class="content-left-name">{{ entries.name }}</h2>
+                </div>
+                <div class="right-content-container">
+                    <p>{{ entries.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="education-color page-margin">
+    <div class="contain-information">
+        <div class="title-div">
+            <h1 class="page-title">Education</h1>
+{#            <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">#}
+        </div>
+        <div class="all-content-container">
+            {% for entries in education %}
+                <div class="content-border-div">
+                <hr style="width: 100%; border: 0.5px solid rgba(33,37,41,0.35); margin-top: 1%; margin-bottom: 0">
+            </div>
+            <div class="left-content-container">
+                <h2 class="content-left-name">{{ entries.name }}</h2>
+            {% now "Ymd" as current_year_month %}
+            {% if entries.end_date|date:"Ymd" > current_year_month  %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - {{ entries.end_date|date:"M Y" }} (estimated)
+                </p>
+            {% else %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - {{ entries.end_date|date:"M Y" }}</p>
+            {% endif %}
+            </div>
+            <div class="right-content-container">
+                <p>{{ entries.type }} with a {{ entries.gpa }} GPA</p>
+                <p>{{ entries.description }}</p>
+            </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="work-color page-margin">
+    <div class="contain-information">
+        <div class="title-div">
+            <h1 class="page-title">Work</h1>
+{#            <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">#}
+        </div>
+        <div class="all-content-container">
+            {% for entries in work|dictsortreversed:"end_date" %}
+                <div class="content-border-div">
+                <hr style="width: 100%; border: 0.5px solid rgba(33,37,41,0.35); margin-top: 1%; margin-bottom: 0">
+            </div>
+            <div class="left-content-container">
+                <h2 class="content-left-name">{{ entries.company }}</h2>
+            {% if entries.present  %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - present</p>
+            {% else %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - {{ entries.end_date|date:"M Y" }}</p>
+            {% endif %}
+            </div>
+            <div class="right-content-container">
+                <p>{{ entries.role }}</p>
+                <p>{{ entries.description }}</p>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="extracurricular-color page-margin">
+    <div class="contain-information">
+        <div class="title-div">
+            <h1 class="page-title">Extracurricular</h1>
+{#            <hr style="width: 40%; color: #000000; border-width: 1.5px; margin-top: 1%; margin-bottom: 0">#}
+        </div>
+        <div class="all-content-container">
+            {% for entries in extracurricular|dictsortreversed:"end_date" %}
+                <div class="content-border-div">
+                <hr style="width: 100%; border: 0.5px solid rgba(33,37,41,0.35); margin-top: 1%; margin-bottom: 0">
+            </div>
+            <div class="left-content-container">
+                <h2 class="content-left-name">{{ entries.name }}</h2>
+            {% if entries.present  %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - present</p>
+            {% else %}
+                <p class="content-left-year">{{ entries.start_date|date:"M Y" }} - {{ entries.end_date|date:"M Y" }}</p>
+            {% endif %}
+            </div>
+            <div class="right-content-container">
+{#                <p>{{ entries.role }}</p>#}
+                <p>{{ entries.description }}</p>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% include 'main_app/footer.html' %}
+
+    {% autoescape off %}
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    {% endautoescape %}
+{% endblock %}

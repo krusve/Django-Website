@@ -1,0 +1,33 @@
+{% extends 'main_app/base_minimal.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="landing-title">
+        <div class="landing-big-image">
+            <p class="landing-page">Welcome</p>
+        </div>
+    </div>
+
+    <div class="about-main landing-background-color1">
+        <h1 class="about-section-main-title landing-header-color">Who I am</h1>
+        <p class="about-section-main-text landing-text-color landing-specifics">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam, atque illo magnam minima officia provident, quidem ratione recusandae reiciendis sapiente suscipit totam unde vel voluptatem. Aliquam doloremque harum ratione?
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem culpa deleniti est quas qui quia sed, sit ut voluptas. Hic iste odio perspiciatis quidem quod totam voluptate. Atque, enim.
+        </p>
+    </div>
+    <div class="about-main landing-background-color2">
+        <h1 class="about-section-main-title landing-header-color">What to find here</h1>
+        <p class="about-section-main-text landing-text-color landing-specifics">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque deleniti distinctio dolor doloremque dolores eum, fuga illum itaque quod recusandae, reprehenderit sed, tempora ut vel? A aliquid id necessitatibus.
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consequatur culpa dolor doloremque doloribus illo impedit incidunt inventore itaque iusto minima, nam, quis quod quos recusandae reiciendis sit vel voluptatum.
+        </p>
+    </div>
+    {% include 'main_app/footer.html' %}
+
+
+{% endblock %}

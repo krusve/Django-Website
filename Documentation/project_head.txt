@@ -1,0 +1,12 @@
+server {
+    server_name <IP> <domain.com> <www.domain.com>;
+
+    
+    location /static/ {
+        alias /home/website/<Name of Project>/static_prod/;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }

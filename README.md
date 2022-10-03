@@ -20,7 +20,27 @@ As the data displayed is stored in a database and can be changed easily it's a u
 - Check the documentation folder for information about the structure, setup, deployment etc.
 - There might be bugs! Feel free to contribute with fixes or create issues!
 
+## How it looks (just a small glimpse! There is much more):
+### Homepage
+![img.png](Documentation/docs_images/home.png)
 
+## About
+![img.png](Documentation/docs_images/about.png)
+
+## Navbar
+![img.png](Documentation/docs_images/navbar.png)
+
+## Resume
+![img.png](Documentation/docs_images/resume1.png)
+
+## Data that the frontend is filled with
+![img.png](Documentation/docs_images/data.png)
+
+## Contact
+![img.png](Documentation/docs_images/contact.png)
+
+## Footer
+![img.png](Documentation/docs_images/footer.png)
 
 
 
